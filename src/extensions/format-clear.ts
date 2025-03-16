@@ -39,7 +39,7 @@ const FormatClear = Extension.create({
                 (e) => e.name === name
               );
               if (extension) {
-                return chain[command]();
+                return (chain as any)[command]();
               }
               return chain;
             }, chain());

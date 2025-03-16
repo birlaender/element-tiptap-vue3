@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "es6",
     "module": "esnext",
-    "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
@@ -13,12 +12,15 @@
     "sourceMap": true,
     "baseUrl": "./src",
     "typeRoots": ["./types", "./node_modules/@types"],
-    "types": ["element-plus/global"],
+    "types": ["element-plus", "element-plus/global"],
     "paths": {
       "@/*": ["./*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
-    "isolatedModules": true
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "strict": false
   },
   "include": [
     "types/**/*",

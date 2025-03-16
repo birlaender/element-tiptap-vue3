@@ -1,4 +1,4 @@
-import type { Editor, Extension } from '@tiptap/core';
+import type { Editor } from '@tiptap/core';
 import TiptapTextAlign from '@tiptap/extension-text-align';
 import CommandButton from '@/components/MenuCommands/CommandButton.vue';
 
