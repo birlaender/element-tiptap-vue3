@@ -113,6 +113,10 @@ const routes = [
     label: 'Output',
     route: 'Output',
   },
+  {
+    label: 'Custom',
+    route: 'Custom',
+  },
 ];
 </script>
 

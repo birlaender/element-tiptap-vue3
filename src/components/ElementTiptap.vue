@@ -12,7 +12,7 @@
     ]"
   >
     <div>
-      <menu-bubble :editor="editor" :class="editorBubbleMenuClass" />
+      <menu-bubble :editor="editor" :class="editorBubbleMenuClass" :shouldShow="showMenuBubble" />
     </div>
     <div>
       <menu-bar :editor="editor" :class="editorMenubarClass" />
@@ -79,7 +79,9 @@ interface Props {
   lang?: string;
   width?: string | number;
   height?: string | number;
-  editorProps?: EditorProps
+  editorProps?: EditorProps,
+  showMenuBubble?: boolean;
+  preserveWhitespace?: string | boolean;
   output: 'html' | 'json';
   readonly?: boolean;
   tooltip?: boolean;
@@ -154,6 +156,14 @@ export default defineComponent({
     editorProps: {
       type: Object as () => EditorProps,
       default: () => {}
+    },
+    showMenuBubble: {
+      type: Boolean,
+      default: true,
+    },
+    preserveWhitespace: {
+      type: [String, Boolean],
+      default: () => false
     },
     charCountMax: {
       type: Number,
@@ -257,6 +267,9 @@ export default defineComponent({
         emit('onDestroy', options);
       },
       onUpdate,
+      parseOptions: {
+        preserveWhitespace: props.preserveWhitespace
+      },
     });
 
     watchEffect(() => {

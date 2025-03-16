@@ -62,11 +62,14 @@ export default defineComponent({
       type: Editor,
       required: true,
     },
-
     menuBubbleOptions: {
       type: Object,
       default: () => ({}),
     },
+    shouldShow: {
+      type: Boolean,
+      default: () => true
+    }
   },
 
   data() {
@@ -86,7 +89,7 @@ export default defineComponent({
 
   computed: {
     bubbleMenuEnable(): boolean {
-      return this.linkMenuEnable || this.textMenuEnable;
+      return this.shouldShow && (this.linkMenuEnable || this.textMenuEnable);
     },
 
     linkMenuEnable(): boolean {

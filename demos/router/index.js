@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
+import Custom from "demos/views/Custom.vue";
 
 const Index = () => import('../views/Index.vue');
 const Simple = () => import('../views/Simple.vue');
@@ -54,6 +55,10 @@ const routes = [
         name: 'Output',
         path: '/output',
         component: Output,
+      },{
+        name: 'Custom',
+        path: '/custom',
+        component: Custom,
       },
     ],
   },
