@@ -56,7 +56,7 @@
 <script lang="ts">
 import {
   computed,
-  defineComponent,
+  defineComponent, PropType,
   provide,
   ref,
   unref,
@@ -81,7 +81,7 @@ interface Props {
   height?: string | number;
   editorProps?: EditorProps,
   showMenuBubble?: boolean;
-  preserveWhitespace?: string | boolean;
+  preserveWhitespace?: boolean | 'full';
   output: 'html' | 'json';
   readonly?: boolean;
   tooltip?: boolean;
@@ -95,6 +95,8 @@ interface Props {
   editorBubbleMenuClass: string | string[] | Record<string, boolean>;
   editorFooterClass: string | string[] | Record<string, boolean>;
 }
+
+export type PreserveWhitespace = boolean | 'full';
 
 export default defineComponent({
   name: 'ElementTiptap',
@@ -154,15 +156,15 @@ export default defineComponent({
       default: true,
     },
     editorProps: {
-      type: Object as () => EditorProps,
-      default: () => {}
+      type: Object as PropType<EditorProps>,
+      default: () => ({})
     },
     showMenuBubble: {
       type: Boolean,
       default: true,
     },
     preserveWhitespace: {
-      type: [String, Boolean],
+      type: [Boolean, String] as PropType<PreserveWhitespace>,
       default: () => false
     },
     charCountMax: {
